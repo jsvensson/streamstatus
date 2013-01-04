@@ -2,9 +2,9 @@ require 'rubygems'
 require 'bundler/setup'
 require 'httparty'
 
-class StreamStatus
+class Stream
 
-	@@stream_uri = {
+	StreamUri = {
 		own3d: "http://api.own3d.tv/rest/live/status.json?liveid=",
 		twitch: "http://api.justin.tv/api/stream/list.json?channel="
 	}
@@ -12,7 +12,7 @@ class StreamStatus
 	def initialize(stream_id, service = :own3d)
 		@service = service
 		@stream_id = stream_id
-		@stream_uri = @@stream_uri[@service] + @stream_id.to_s
+		@stream_uri = StreamUri[@service] + @stream_id.to_s
 		get_status
 	end
 
