@@ -25,6 +25,7 @@ set :streams, streams = [
 settings.streams.each do |s|
 	stream = Stream.new(s[:id], s[:service])
 	s[:is_live] = stream.is_live?
+	s[:viewers] = stream.viewers
 end
 
 get '/' do
