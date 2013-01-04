@@ -1,0 +1,10 @@
+!!!
+%html
+	%head
+		%title= @title
+	%body
+		%h1= @title
+
+		%ol
+			- @streams.each do |s|
+				%li== #{s[:name]}, #{s[:is_live]}
