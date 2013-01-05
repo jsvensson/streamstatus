@@ -55,7 +55,15 @@ describe Stream, "#viewers" do
 end
 
 describe Stream, "@uri" do
-	it "returns stream URL" do
-			stream_online.uri.should eq("http://www.own3d.tv/Echo5ive/live/131174")
+	context "stream is offline" do
+		it "returns stream URL" do
+				stream_online.uri.should eq("http://www.own3d.tv/Echo5ive/live/131174")
+		end
+	end
+
+	context "stream is online" do
+	  it "returns stream URL" do
+	  		stream_online.uri.should eq("http://www.own3d.tv/Echo5ive/live/131174")
+	  end
 	end
 end
