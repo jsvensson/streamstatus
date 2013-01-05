@@ -7,7 +7,7 @@ class Stream
 
 	attr_reader :name, :viewers, :uri
 
-	StreamUri = {
+	StreamJsonUri = {
 		own3d: "http://api.own3d.tv/rest/live/status.json?liveid=",
 		twitch: "http://api.justin.tv/api/stream/list.json?channel="
 	}
@@ -18,9 +18,9 @@ class Stream
 		@stream_id = stream_id
 
 		if @options[:file]
-			@stream_uri = @options[:file]
+			@json_uri = @options[:file]
 		else
-			@stream_uri = StreamUri[@service] + @stream_id.to_s
+			@json_uri = StreamJsonUri[@service] + @stream_id.to_s
 		end
 
 		get_status
@@ -36,10 +36,10 @@ class Stream
 #		puts "## Stream URI: #{@stream_uri}"
 #		puts "## Getting JSON for #{@service.capitalize} stream #{@stream_id}"
 		if @options[:file]
-			f = File.read(@stream_uri)
+			f = File.read(@json_uri)
 			response = MultiJson.load(f)
 		else
-			response = HTTParty.get(@stream_uri)
+			response = HTTParty.get(@json_uri)
 		end
 
 		case @service
