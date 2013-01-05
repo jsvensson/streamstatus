@@ -51,19 +51,23 @@ describe Stream, '#viewers' do
 		it 'shows >= 1 viewers' do
 			stream_online.viewers.should >= 1
 		end
+		it 'shows exact viewer count' do
+			stream_online.viewers.should eq(6633)
+		end
 	end
+
 end
 
 describe Stream, "@uri" do
 	context "stream is online" do
-		it "returns nil for stream URL because Twitch sucks" do
-				stream_online.uri.should be(nil)
+		it "returns stream URL" do
+				stream_online.uri.should eq("http://www.justin.tv/dandinh")
 		end
 	end
 
 	context "stream is offline" do
-	  it "still returns nil goddamnit Twitch" do
-	  		stream_online.uri.should be(nil)
+	  it "returns nil goddamnit Twitch" do
+	  		stream_offline.uri.should be(nil)
 	  end
 	end
 end

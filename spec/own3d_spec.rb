@@ -51,6 +51,9 @@ describe Stream, "#viewers" do
 		it "shows >= 1 viewers" do
 			stream_online.viewers.should >= 1
 		end
+		it "shows exact viewer count" do
+			stream_online.viewers.should eq(15)
+		end
 	end
 end
 
