@@ -5,6 +5,6 @@
 	%body
 		%h1= @title
 
-		%ol
+		%ul
 			- @streams.each do |s|
-				%li== #{s[:name]}, #{s[:is_live]}, #{s[:viewers]} viewers
+				%li== <a href="#{s[:uri]}">#{s[:name]}</a>, #{s[:is_live]}, #{s[:viewers]} viewers
