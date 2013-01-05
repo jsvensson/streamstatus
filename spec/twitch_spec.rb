@@ -2,7 +2,7 @@ require 'rubygems'
 require 'bundler'
 Bundler.require :test
 
-Dir["./lib/*.rb"].each { |f| require f }
+require 'streamstatus'
 
 file = {
 	online: 'spec/json-tests/twitch-dandinh-online.json',
