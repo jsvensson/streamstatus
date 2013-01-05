@@ -48,8 +48,8 @@ describe Stream, "#viewers" do
 	end
 
 	context "stream is online" do
-		it "shows 15 viewers" do
-			stream_online.viewers.should eq(15)
+		it "shows >= 1 viewers" do
+			stream_online.viewers.should >= 1
 		end
 	end
 end

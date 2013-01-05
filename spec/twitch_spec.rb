@@ -41,9 +41,8 @@ describe Stream, '#viewers' do
 	end
 
 	context 'stream is online' do
-		it 'shows 6633 viewers' do
-			s = Stream.new(131174, :twitch, {file: file[:online]})
-			s.viewers.should eq(6633)
+		it 'shows >= 1 viewers' do
+			stream_online.viewers.should >= 1
 		end
 	end
 end
