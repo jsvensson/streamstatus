@@ -60,7 +60,7 @@ class Stream
 			@viewers = data['channel_count']
 		else
 			@is_live = false
-			@name    = ''
+			@name    = nil
 			@viewers = 0
 		end
 	end
