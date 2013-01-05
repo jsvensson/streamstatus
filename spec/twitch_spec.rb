@@ -9,34 +9,41 @@ file = {
 	offline: 'spec/json-tests/twitch-dandinh-offline.json'
 }
 
+stream_online = Stream.new('DanDinh', :twitch, {file: file[:online]})
+stream_offline = Stream.new('DanDinh', :twitch, {file: file[:offline]})
+
 describe Stream, '#is_live?' do
 	context 'stream is online' do
 		it 'returns true' do
-			s = Stream.new('DanDinh', :twitch, {file: file[:online]})
-			s.is_live?.should be_true
+			stream_online.is_live?.should be_true
 		end
 	end
 
 	context 'stream is offline' do
 		it 'returns false' do
-			s = Stream.new('DanDinh', :twitch, {file: file[:offline]})
-			s.is_live?.should be_false
+			stream_offline.is_live?.should be_false
 		end
 	end
 end
 
 describe Stream, '#name' do
-	it 'shows stream name' do
-		s = Stream.new('DanDinh', :twitch, {file: file[:online]})
-		s.name.should eq("Dan Dinh")
+	context "stream is online" do
+		it 'shows stream name' do
+			stream_online.name.should eq("Dan Dinh")
+		end
+	end
+
+	context "stream is offline" do
+		it "returns nil" do
+			stream_offline.name.should be(nil)
+		end
 	end
 end
 
 describe Stream, '#viewers' do
 	context 'stream is offline' do
 		it 'shows 0 viewers' do
-			s = Stream.new('DanDinh', :twitch, {file: file[:offline]})
-			s.viewers.should eq(0)
+			stream_offline.viewers.should eq(0)
 		end
 	end
 
@@ -47,3 +54,16 @@ describe Stream, '#viewers' do
 	end
 end
 
+describe Stream, "@uri" do
+	context "stream is online" do
+		it "returns nil for stream URL because Twitch sucks" do
+				stream_online.uri.should be(nil)
+		end
+	end
+
+	context "stream is offline" do
+	  it "still returns nil goddamnit Twitch" do
+	  		stream_online.uri.should be(nil)
+	  end
+	end
+end
