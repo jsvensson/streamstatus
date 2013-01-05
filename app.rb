@@ -19,6 +19,11 @@ set :streams, streams = [
 			id: "DanDinh",
 			name: "Dan Dinh",
 			service: :twitch
+		},
+		{
+			id: "P10DotA",
+			name: "P10",
+			service: :twitch
 		}
 	]
 
