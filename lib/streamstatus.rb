@@ -5,7 +5,7 @@ require 'httparty'
 
 class Stream
 
-	attr_reader :name, :viewers
+	attr_reader :name, :viewers, :uri
 
 	StreamUri = {
 		own3d: "http://api.own3d.tv/rest/live/status.json?liveid=",
@@ -69,6 +69,7 @@ class Stream
 		@is_live = data['live_is_live'].to_i == 1
 		@name    = data['live_name']
 		@viewers = data['live_viewers'].to_i
+		@uri     = "http://www.own3d.tv/#{data['channel_name']}/live/#{data['live_id']}"
 	end
 
 end
