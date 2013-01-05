@@ -58,10 +58,12 @@ class Stream
 			@is_live = true
 			@name    = data['title']
 			@viewers = data['channel_count']
+			@uri     = data['channel']['channel_url']
 		else
 			@is_live = false
 			@name    = nil
 			@viewers = 0
+			@uri     = nil
 		end
 	end
 
