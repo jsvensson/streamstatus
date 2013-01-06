@@ -42,6 +42,15 @@ class Stream
 		@is_live
 	end
 
+	def to_s
+		{
+			name: @name,
+			viewers: @viewers,
+			uri: @uri,
+			cache_id: @cache_id
+		}
+	end
+
 	private
 
 	def get_status
