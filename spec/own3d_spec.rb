@@ -2,7 +2,7 @@ require 'rubygems'
 require 'bundler'
 Bundler.require :test
 
-require 'streamstatus'
+require 'stream'
 
 file = {
 	online: 'spec/json-tests/own3d-echo5ive-online.json',

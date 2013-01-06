@@ -2,7 +2,7 @@ require 'rubygems'
 require 'bundler'
 Bundler.require :test
 
-require 'streamstatus'
+require 'stream'
 
 file = {
 	online: 'spec/json-tests/twitch-dandinh-online.json',
