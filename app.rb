@@ -4,6 +4,11 @@ Bundler.require :default, :webapp, (ENV['RACK_ENV'] || "development").to_sym
 
 Dir["./lib/*.rb"].each { |f| require f }
 
+# Cache settings
+set :cache, (ENV["MEMCACHE_SERVERS"] || Dalli::Client.new)
+set :cache_ttl, 180
+
+# Haml settings
 set :haml, format: :html5, attr_wrapper: %{"}
 set :title, "Stream status"
 
