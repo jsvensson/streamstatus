@@ -12,6 +12,12 @@ file = {
 stream_online = Stream.new(131174, :own3d, {file: file[:online]})
 stream_offline = Stream.new(131174, :own3d, {file: file[:offline]})
 
+describe Stream, "@cache_id" do
+	it "returns cache id" do
+		stream_online.cache_id.should eq("own3d-131174")
+	end
+end
+
 describe Stream, "#is_live?" do
 	context "stream is online" do
 		it "returns true" do

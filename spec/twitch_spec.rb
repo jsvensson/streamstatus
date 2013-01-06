@@ -12,6 +12,12 @@ file = {
 stream_online = Stream.new('DanDinh', :twitch, {file: file[:online]})
 stream_offline = Stream.new('DanDinh', :twitch, {file: file[:offline]})
 
+describe Stream, "@cache_id" do
+	it "returns cache id" do
+		stream_online.cache_id.should eq("twitch-dandinh")
+	end
+end
+
 describe Stream, '#is_live?' do
 	context 'stream is online' do
 		it 'returns true' do
