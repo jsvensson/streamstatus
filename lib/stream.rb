@@ -2,7 +2,7 @@ require 'httparty'
 
 class Stream
 
-	attr_reader :name, :viewers, :uri
+	attr_reader :name, :viewers, :uri, :cache_id
 
 	StreamJsonUri = {
 		own3d: "http://api.own3d.tv/rest/live/status.json?liveid=",
@@ -13,7 +13,7 @@ class Stream
 		@options = options
 		@service = service
 		@stream_id = stream_id
-
+		@cache_id = StreamCache.name(@service, @stream_id)
 		if @options[:file]
 			@json_uri = @options[:file]
 		else
