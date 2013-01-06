@@ -27,14 +27,16 @@ set :streams, streams = [
 		}
 	]
 
-settings.streams.each do |s|
-	stream = Stream.new(s[:id], s[:service])
-	s[:is_live] = stream.is_live?
-	s[:viewers] = stream.viewers
-	s[:uri]     = stream.uri
+def update_streams
+	settings.streams.map! do |stream|
+		stream_id = "#{stream[:service]}-#{stream[:id]}"
+		Stream.new(stream[:id], stream[:service])
+	end
 end
 
-get '/' do
+get "/" do
+	update_streams
+
 	@title = settings.title
 	@streams = settings.streams
 
