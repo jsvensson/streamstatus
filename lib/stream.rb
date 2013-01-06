@@ -1,6 +1,3 @@
-require 'rubygems'
-require 'bundler/setup'
-#Bundler.require :default, (ENV['RACK_ENV'] || "development").to_sym
 require 'httparty'
 
 class Stream
@@ -33,8 +30,6 @@ class Stream
 	private
 
 	def get_status
-#		puts "## Stream URI: #{@stream_uri}"
-#		puts "## Getting JSON for #{@service.capitalize} stream #{@stream_id}"
 		if @options[:file]
 			f = File.read(@json_uri)
 			response = MultiJson.load(f)
