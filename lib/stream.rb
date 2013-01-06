@@ -1,5 +1,20 @@
 require 'httparty'
 
+module StreamCache
+
+	def self.get(key, ttl=settings.cache_ttl)
+		if settings.cache.get(key) == nil
+			settings.cache.set(key, "foo")
+		end
+		settings.cache.get(key)
+	end
+
+	def self.name(service, name)
+		"#{service}-#{name}".downcase
+	end
+
+end
+
 class Stream
 
 	attr_reader :name, :viewers, :uri, :cache_id
