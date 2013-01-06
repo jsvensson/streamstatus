@@ -9,7 +9,8 @@ set :title, "Stream status"
 
 # Streams to monitor
 # [id, name, :service]
-set :streams, streams = [
+
+set :streams, [
 		{
 			id: 131174,
 			name: "Echo",
