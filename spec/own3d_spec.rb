@@ -1,31 +1,43 @@
 require 'stream'
 
-file = {
-	online: 'spec/json-tests/own3d-echo5ive-online.json',
-	offline: 'spec/json-tests/own3d-echo5ive-offline.json'
-}
+def own3d_online
+	Stream.new(131174, :own3d, {file: 'spec/json-tests/own3d-echo5ive-online.json'})
+end
 
-stream_online = Stream.new(131174, :own3d, {file: file[:online]})
-stream_offline = Stream.new(131174, :own3d, {file: file[:offline]})
+def own3d_offline
+	Stream.new(131174, :own3d, {file: 'spec/json-tests/own3d-echo5ive-offline.json'})
+end
 
 describe Stream do
 
+	context "stream is online" do
+		it "should initialize" do
+			own3d_online.should be_a(Stream)
+		end
+	end
+
+	context "stream is offline" do
+		it "should initialize" do
+			own3d_offline.should be_a(Stream)
+		end
+	end
+
 	describe "@cache_id" do
 		it "returns cache id" do
-			stream_online.cache_id.should eq("own3d-131174")
+			own3d_online.cache_id.should eq("own3d-131174")
 		end
 	end
 
 	describe "#is_live?" do
 		context "stream is online" do
 			it "returns true" do
-				stream_online.is_live?.should be_true
+				own3d_online.is_live?.should be_true
 			end
 		end
 
 		context "stream is offline" do
 			it "returns false" do
-				stream_offline.is_live?.should be_false
+				own3d_offline.is_live?.should be_false
 			end
 		end
 	end
@@ -33,13 +45,13 @@ describe Stream do
 	describe "#name" do
 		context "is online" do
 			it "shows stream name" do
-				stream_online.name.should eq("Echo's Adventures")
+				own3d_online.name.should eq("Echo's Adventures")
 			end
 		end
 
 		context "is offline" do
 			it "shows stream name" do
-				stream_offline.name.should eq("Echo's Adventures")
+				own3d_offline.name.should eq("Echo's Adventures")
 			end
 		end
 	end
@@ -47,16 +59,16 @@ describe Stream do
 	describe "#viewers" do
 		context "stream is offline" do
 			it "shows 0 viewers" do
-				stream_offline.viewers.should eq(0)
+				own3d_offline.viewers.should eq(0)
 			end
 		end
 
 		context "stream is online" do
 			it "shows >= 1 viewers" do
-				stream_online.viewers.should >= 1
+				own3d_online.viewers.should >= 1
 			end
 			it "shows exact viewer count" do
-				stream_online.viewers.should eq(15)
+				own3d_online.viewers.should eq(15)
 			end
 		end
 	end
@@ -64,13 +76,13 @@ describe Stream do
 	describe "@uri" do
 		context "stream is offline" do
 			it "returns stream URL" do
-				stream_online.uri.should eq("http://www.own3d.tv/Echo5ive/live/131174")
+				own3d_online.uri.should eq("http://www.own3d.tv/Echo5ive/live/131174")
 			end
 		end
 
 		context "stream is online" do
 		  it "returns stream URL" do
-		  	stream_online.uri.should eq("http://www.own3d.tv/Echo5ive/live/131174")
+		  	own3d_online.uri.should eq("http://www.own3d.tv/Echo5ive/live/131174")
 		  end
 		end
 	end

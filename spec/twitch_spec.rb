@@ -1,31 +1,43 @@
 require 'stream'
 
-file = {
-	online: 'spec/json-tests/twitch-dandinh-online.json',
-	offline: 'spec/json-tests/twitch-dandinh-offline.json'
-}
+def twitch_online
+	Stream.new('DanDinh', :twitch, {file: 'spec/json-tests/twitch-dandinh-online.json'})
+end
 
-stream_online = Stream.new('DanDinh', :twitch, {file: file[:online]})
-stream_offline = Stream.new('DanDinh', :twitch, {file: file[:offline]})
+def twitch_offline
+	Stream.new('DanDinh', :twitch, {file: 'spec/json-tests/twitch-dandinh-offline.json'})
+end
 
 describe Stream do
 
+	context "stream is online" do
+		it "should initialize" do
+			twitch_online.should be_a(Stream)
+		end
+	end
+
+	context "stream is offline" do
+		it "should initialize" do
+			twitch_offline.should be_a(Stream)
+		end
+	end
+
 	describe "@cache_id" do
 		it "returns cache id" do
-			stream_online.cache_id.should eq("twitch-dandinh")
+			twitch_online.cache_id.should eq("twitch-dandinh")
 		end
 	end
 
 	describe '#is_live?' do
 		context 'stream is online' do
 			it 'returns true' do
-				stream_online.is_live?.should be_true
+				twitch_online.is_live?.should be_true
 			end
 		end
 
 		context 'stream is offline' do
 			it 'returns false' do
-				stream_offline.is_live?.should be_false
+				twitch_offline.is_live?.should be_false
 			end
 		end
 	end
@@ -33,13 +45,13 @@ describe Stream do
 	describe '#name' do
 		context "stream is online" do
 			it 'shows stream name' do
-				stream_online.name.should eq("Dan Dinh")
+				twitch_online.name.should eq("Dan Dinh")
 			end
 		end
 
 		context "stream is offline" do
 			it "returns nil" do
-				stream_offline.name.should be(nil)
+				twitch_offline.name.should be(nil)
 			end
 		end
 	end
@@ -47,16 +59,16 @@ describe Stream do
 	describe '#viewers' do
 		context 'stream is offline' do
 			it 'shows 0 viewers' do
-				stream_offline.viewers.should eq(0)
+				twitch_offline.viewers.should eq(0)
 			end
 		end
 
 		context 'stream is online' do
 			it 'shows >= 1 viewers' do
-				stream_online.viewers.should >= 1
+				twitch_online.viewers.should >= 1
 			end
 			it 'shows exact viewer count' do
-				stream_online.viewers.should eq(6633)
+				twitch_online.viewers.should eq(6633)
 			end
 		end
 
@@ -65,13 +77,13 @@ describe Stream do
 	describe "@uri" do
 		context "stream is online" do
 			it "returns stream URL" do
-					stream_online.uri.should eq("http://www.justin.tv/dandinh")
+					twitch_online.uri.should eq("http://www.justin.tv/dandinh")
 			end
 		end
 
 		context "stream is offline" do
 		  it "returns nil goddamnit Twitch" do
-		  		stream_offline.uri.should be(nil)
+		  		twitch_offline.uri.should be(nil)
 		  end
 		end
 	end
