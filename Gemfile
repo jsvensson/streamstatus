@@ -9,6 +9,12 @@ group :webapp do
 	gem "haml"
 end
 
+group :development do
+	gem "guard"
+	gem "guard-rspec"
+	gem 'rb-fsevent', '~> 0.9.1'
+end
+
 group :test do
 	gem "rake"
 	gem "rspec", "~> 2.12.0"
