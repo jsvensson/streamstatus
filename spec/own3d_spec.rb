@@ -93,4 +93,19 @@ describe Stream do
 		end
 	end
 
+	describe "@json_uri" do
+		context "stream is offline" do
+			it "returns JSON URI" do
+				own3d_online.json_uri.should eq("http://api.own3d.tv/rest/live/status.json?liveid=131174")
+			end
+		end
+
+		context "stream is online" do
+		  it "returns JSON URI" do
+		  	own3d_online.json_uri.should eq("http://api.own3d.tv/rest/live/status.json?liveid=131174")
+		  end
+		end
+	end
+
+
 end
