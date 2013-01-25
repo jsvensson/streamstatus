@@ -1,28 +1,27 @@
 require 'httparty'
 
-module StreamCache
-
-	def self.get(key, ttl=settings.cache_ttl)
-		if settings.cache.get(key) == nil
-			settings.cache.set(key, "foo")
-		end
-		settings.cache.get(key)
-	end
-
-	def self.name(service, name)
-		"#{service}-#{name}".downcase
-	end
-
-end
-
 class Stream
+	module Cache
+
+		def self.get(key, ttl=settings.cache_ttl)
+			if settings.cache.get(key) == nil
+				settings.cache.set(key, "foo")
+			end
+			settings.cache.get(key)
+		end
+
+		def self.name(service, name)
+			Digest::MD5.hexdigest "#{service}-#{name}"
+		end
+
+	end
 
 	attr_reader :name, :viewers, :uri, :cache_id
 
 	def initialize(stream_id, options = {})
 		@options = options
 		@stream_id = stream_id
-		@cache_id = StreamCache.name(self.class, @stream_id)
+		@cache_id = Stream::Cache.name(self.class, @stream_id)
 		if @options[:file]
 			@json_uri = @options[:file]
 		else
