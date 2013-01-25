@@ -8,14 +8,15 @@ class Stream
 
 	attr_reader :name, :viewers, :stream_uri, :json_uri, :cache_id
 
-	def initialize(stream_id, options = {})
+	def initialize(stream_uri, options = {})
 		@options = options
-		@stream_id = stream_id
+		@stream_uri = stream_uri
 		@cache_id = Stream::Cache.name(self.class, @stream_id)
 		if @options[:file]
+			@stream_id = Stream::Service.normalize(stream_uri)[:stream_id]
 			@json_uri = @options[:file]
 		else
-			@json_uri = StreamJsonUri[@service] + @stream_id.to_s
+			@json_uri = Stream::Service.normalize(stream_url)
 		end
 
 		get_status
