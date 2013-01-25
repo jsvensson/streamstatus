@@ -3,17 +3,17 @@ require 'stream'
 require 'stream_twitch'
 
 def twitch_online
-	Stream::Twitch.new('DanDinh', {file: 'spec/json-tests/twitch-dandinh-online.json'})
+	Stream::Twitch.new('http://www.twitch.tv/DanDinh', {file: 'spec/json-tests/twitch-dandinh-online.json'})
 end
 
 def twitch_offline
-	Stream::Twitch.new('DanDinh', {file: 'spec/json-tests/twitch-dandinh-offline.json'})
+	Stream::Twitch.new('http://www.twitch.tv/DanDinh', {file: 'spec/json-tests/twitch-dandinh-offline.json'})
 end
 
 describe Stream::Twitch do
 
 	it "should be a Stream" do
-		own3d_online.should be_a(Stream)
+		twitch_online.should be_a(Stream)
 	end
 
 	context "stream is online" do
@@ -30,7 +30,7 @@ describe Stream::Twitch do
 
 	describe "@cache_id" do
 		it "returns cache id" do
-			twitch_online.cache_id.should eq("7963899928cf25a77cca7f134307ed6c")
+			twitch_online.cache_id.should eq("2cfde5ec768165e18983ec0cf6d1dd3f")
 		end
 	end
 
@@ -82,16 +82,31 @@ describe Stream::Twitch do
 
 	describe "@stream_uri" do
 		context "stream is online" do
-			it "returns stream URL" do
-					twitch_online.stream_uri.should eq("http://www.justin.tv/dandinh")
+			it "returns stream URI" do
+				twitch_online.stream_uri.should eq("http://www.justin.tv/dandinh")
 			end
 		end
 
 		context "stream is offline" do
 		  it "returns nil goddamnit Twitch" do
-		  		twitch_offline.stream_uri.should be(nil)
+		  	twitch_offline.stream_uri.should be(nil)
 		  end
 		end
 	end
+
+	describe "@json_uri" do
+		context "stream is offline" do
+			it "returns JSON URI" do
+				twitch_online.json_uri.should eq("http://api.justin.tv/api/stream/list.json?channel=DanDinh")
+			end
+		end
+
+		context "stream is online" do
+		  it "returns JSON URI" do
+		  	twitch_online.json_uri.should eq("http://api.justin.tv/api/stream/list.json?channel=DanDinh")
+		  end
+		end
+	end
+
 
 end

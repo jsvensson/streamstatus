@@ -3,11 +3,11 @@ require 'stream'
 require 'stream_own3d'
 
 def own3d_online
-	Stream::Own3d.new(131174, {file: 'spec/json-tests/own3d-echo5ive-online.json'})
+	Stream::Own3d.new("http://www.own3d.tv/Echo5ive/live/131174", {file: 'spec/json-tests/own3d-echo5ive-online.json'})
 end
 
 def own3d_offline
-	Stream::Own3d.new(131174, {file: 'spec/json-tests/own3d-echo5ive-offline.json'})
+	Stream::Own3d.new("http://www.own3d.tv/Echo5ive/live/131174", {file: 'spec/json-tests/own3d-echo5ive-offline.json'})
 end
 
 describe Stream::Own3d do
@@ -30,7 +30,7 @@ describe Stream::Own3d do
 
 	describe "@cache_id" do
 		it "returns cache id" do
-			own3d_online.cache_id.should eq("c5f8da039f6b5972da912c28b6fa16f5")
+			own3d_online.cache_id.should eq("1cfb3a7e7fbaa0ea2e65e3e306861dbb")
 		end
 	end
 
@@ -106,6 +106,5 @@ describe Stream::Own3d do
 		  end
 		end
 	end
-
 
 end
