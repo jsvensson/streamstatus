@@ -1,11 +1,12 @@
 require 'stream'
+require 'stream_twitch'
 
 def twitch_online
-	Stream.new('DanDinh', :twitch, {file: 'spec/json-tests/twitch-dandinh-online.json'})
+	Stream::Twitch.new('DanDinh', {file: 'spec/json-tests/twitch-dandinh-online.json'})
 end
 
 def twitch_offline
-	Stream.new('DanDinh', :twitch, {file: 'spec/json-tests/twitch-dandinh-offline.json'})
+	Stream::Twitch.new('DanDinh', {file: 'spec/json-tests/twitch-dandinh-offline.json'})
 end
 
 describe Stream do
@@ -24,7 +25,7 @@ describe Stream do
 
 	describe "@cache_id" do
 		it "returns cache id" do
-			twitch_online.cache_id.should eq("twitch-dandinh")
+			twitch_online.cache_id.should eq("stream::twitch-dandinh")
 		end
 	end
 

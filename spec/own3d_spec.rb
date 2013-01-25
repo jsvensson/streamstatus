@@ -1,30 +1,31 @@
 require 'stream'
+require 'stream_own3d'
 
 def own3d_online
-	Stream.new(131174, :own3d, {file: 'spec/json-tests/own3d-echo5ive-online.json'})
+	Stream::Own3d.new(131174, {file: 'spec/json-tests/own3d-echo5ive-online.json'})
 end
 
 def own3d_offline
-	Stream.new(131174, :own3d, {file: 'spec/json-tests/own3d-echo5ive-offline.json'})
+	Stream::Own3d.new(131174, {file: 'spec/json-tests/own3d-echo5ive-offline.json'})
 end
 
 describe Stream do
 
 	context "stream is online" do
 		it "should initialize" do
-			own3d_online.should be_a(Stream)
+			own3d_online.should be_a(Stream::Own3d)
 		end
 	end
 
 	context "stream is offline" do
 		it "should initialize" do
-			own3d_offline.should be_a(Stream)
+			own3d_offline.should be_a(Stream::Own3d)
 		end
 	end
 
 	describe "@cache_id" do
 		it "returns cache id" do
-			own3d_online.cache_id.should eq("own3d-131174")
+			own3d_online.cache_id.should eq("stream::own3d-131174")
 		end
 	end
 

@@ -19,16 +19,10 @@ class Stream
 
 	attr_reader :name, :viewers, :uri, :cache_id
 
-	StreamJsonUri = {
-		own3d: "http://api.own3d.tv/rest/live/status.json?liveid=",
-		twitch: "http://api.justin.tv/api/stream/list.json?channel="
-	}
-
-	def initialize(stream_id, service = :own3d, options = {})
+	def initialize(stream_id, options = {})
 		@options = options
-		@service = service
 		@stream_id = stream_id
-		@cache_id = StreamCache.name(@service, @stream_id)
+		@cache_id = StreamCache.name(self.class, @stream_id)
 		if @options[:file]
 			@json_uri = @options[:file]
 		else
@@ -61,36 +55,11 @@ class Stream
 			response = HTTParty.get(@json_uri)
 		end
 
-		case @service
-		when :twitch
-			@response = build_twitch(response)
-		when :own3d
-			@response = build_own3d(response)
-		end
+		@response = build(response)
 	end
 
-	def build_twitch(data)
-		# Twitch puts the stream data in an array, move it up
-		data = data[0]
-
-		if data
-			@is_live = true
-			@name    = data['title']
-			@viewers = data['channel_count']
-			@uri     = data['channel']['channel_url']
-		else
-			@is_live = false
-			@name    = nil
-			@viewers = 0
-			@uri     = nil
-		end
-	end
-
-	def build_own3d(data)
-		@is_live = data['live_is_live'].to_i == 1
-		@name    = data['live_name']
-		@viewers = data['live_viewers'].to_i
-		@uri     = "http://www.own3d.tv/#{data['channel_name']}/live/#{data['live_id']}"
+	def build(data)
+		raise NotImplementedError
 	end
 
 end
