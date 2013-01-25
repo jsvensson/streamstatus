@@ -80,16 +80,16 @@ describe Stream do
 
 	end
 
-	describe "@uri" do
+	describe "@stream_uri" do
 		context "stream is online" do
 			it "returns stream URL" do
-					twitch_online.uri.should eq("http://www.justin.tv/dandinh")
+					twitch_online.stream_uri.should eq("http://www.justin.tv/dandinh")
 			end
 		end
 
 		context "stream is offline" do
 		  it "returns nil goddamnit Twitch" do
-		  		twitch_offline.uri.should be(nil)
+		  		twitch_offline.stream_uri.should be(nil)
 		  end
 		end
 	end

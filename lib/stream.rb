@@ -18,7 +18,7 @@ class Stream
 
 	end
 
-	attr_reader :name, :viewers, :uri, :cache_id
+	attr_reader :name, :viewers, :stream_uri, :json_uri, :cache_id
 
 	def initialize(stream_id, options = {})
 		@options = options
@@ -41,7 +41,7 @@ class Stream
 		{
 			name: @name,
 			viewers: @viewers,
-			uri: @uri,
+			stream_uri: @stream_uri,
 			cache_id: @cache_id
 		}
 	end
