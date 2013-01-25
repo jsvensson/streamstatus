@@ -1,7 +1,6 @@
 class Stream
 
 	class Twitch < Stream
-		StreamJsonUri = 'http://api.justin.tv/api/stream/list.json?channel='
 
 		private
 

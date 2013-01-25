@@ -2,8 +2,6 @@ class Stream
 
 	class Own3d < Stream
 
-		StreamJsonUri = 'http://api.own3d.tv/rest/live/status.json?liveid='
-
 		private
 
 		def build(data)
