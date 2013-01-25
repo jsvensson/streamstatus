@@ -10,5 +10,6 @@ group :webapp do
 end
 
 group :test do
+	gem "rake"
 	gem "rspec", "~> 2.12.0"
 end
