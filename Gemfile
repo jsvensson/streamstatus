@@ -10,6 +10,7 @@ group :webapp do
 end
 
 group :development do
+	gem "growl"
 	gem "guard"
 	gem "guard-rspec"
 	gem 'rb-fsevent', '~> 0.9.1'
