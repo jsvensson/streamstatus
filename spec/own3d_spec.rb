@@ -81,13 +81,13 @@ describe Stream do
 
 	describe "@stream_uri" do
 		context "stream is offline" do
-			it "returns stream URL" do
+			it "returns stream URI" do
 				own3d_online.stream_uri.should eq("http://www.own3d.tv/Echo5ive/live/131174")
 			end
 		end
 
 		context "stream is online" do
-		  it "returns stream URL" do
+		  it "returns stream URI" do
 		  	own3d_online.stream_uri.should eq("http://www.own3d.tv/Echo5ive/live/131174")
 		  end
 		end
