@@ -1,5 +1,7 @@
+notification :growl
+
 guard 'rspec', :cli => "--color" do
-  watch(%r{^spec/.+_spec\.rb$})
-  watch(%r{^lib/(.+)\.rb$})     { |m| "spec" }
-  watch('spec/spec_helper.rb')  { "spec" }
+	watch('lib/stream.rb') { "spec" }
+  watch(%r{^spec/.+_spec\.rb$})  # Watch *_spec.rb in spec/
+  watch(%r{^lib/stream_(.+)\.rb$}) { |m| "spec/#{m[1]}_spec.rb" }  # lib/*_spec.rb
 end
