@@ -1,6 +1,6 @@
 require 'rspec/core/rake_task'
 
-deploy_branch  = :master  # :deploy will only run if in this branch
+deploy_branch = :master  # :deploy will only run if in this branch
 
 def ok_failed(condition)
   if (condition)
