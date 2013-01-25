@@ -2,21 +2,9 @@ require 'rubygems'
 require 'bundler'
 Bundler.require :default, (ENV['RACK_ENV'] || "development").to_sym
 
+require 'stream_utils'
+
 class Stream
-	module Cache
-
-		def self.get(key, ttl=settings.cache_ttl)
-			if settings.cache.get(key) == nil
-				settings.cache.set(key, "foo")
-			end
-			settings.cache.get(key)
-		end
-
-		def self.name(service, name)
-			Digest::MD5.hexdigest "#{service}-#{name}"
-		end
-
-	end
 
 	attr_reader :name, :viewers, :stream_uri, :json_uri, :cache_id
 
