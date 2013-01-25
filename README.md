@@ -1,6 +1,4 @@
-# Stream Status
-
-[![Build Status](https://travis-ci.org/jsvensson/streamstatus.png?branch=master)](https://travis-ci.org/jsvensson/streamstatus)
+# Stream Status [![Build Status](https://travis-ci.org/jsvensson/streamstatus.png?branch=master)](https://travis-ci.org/jsvensson/streamstatus)
 
 A small [Heroku](http://heroku.com/) app for showing Twitch/Own3d stream status images. Currently running on [streamstatus.herokuapp.com](http://streamstatus.herokuapp.com/).
 
