@@ -10,7 +10,7 @@ def twitch_offline
 	Stream::Twitch.new('DanDinh', {file: 'spec/json-tests/twitch-dandinh-offline.json'})
 end
 
-describe Stream do
+describe Stream::Twitch do
 
 	it "should be a Stream" do
 		own3d_online.should be_a(Stream)

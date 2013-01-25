@@ -10,7 +10,7 @@ def own3d_offline
 	Stream::Own3d.new(131174, {file: 'spec/json-tests/own3d-echo5ive-offline.json'})
 end
 
-describe Stream do
+describe Stream::Own3d do
 
 	it "should be a Stream" do
 		own3d_online.should be_a(Stream)
