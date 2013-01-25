@@ -11,15 +11,19 @@ end
 
 describe Stream do
 
+	it "should be a Stream" do
+		own3d_online.should be_a(Stream)
+	end
+
 	context "stream is online" do
 		it "should initialize" do
-			twitch_online.should be_a(Stream)
+			twitch_online.should be_an_instance_of(Stream::Twitch)
 		end
 	end
 
 	context "stream is offline" do
 		it "should initialize" do
-			twitch_offline.should be_a(Stream)
+			twitch_offline.should be_an_instance_of(Stream::Twitch)
 		end
 	end
 
