@@ -10,11 +10,11 @@ class Stream
 		@options = options
 		@stream_uri = stream_uri
 		@cache_id = Stream::Cache.name(self.class, @stream_id)
+		@stream_id = Stream::Service.normalize(stream_uri)[:stream_id]
 		if @options[:file]
-			@stream_id = Stream::Service.normalize(stream_uri)[:stream_id]
 			@json_uri = @options[:file]
 		else
-			@json_uri = Stream::Service.normalize(stream_uri)
+			@json_uri = Stream::Service.normalize(stream_uri)[:json_uri]
 		end
 
 		get_status
