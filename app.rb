@@ -4,6 +4,13 @@ Bundler.require :default, :webapp, (ENV['RACK_ENV'] || "development").to_sym
 
 Dir["./lib/*.rb"].each { |f| require f }
 
+# Uncomment for local testing
+ENV['MEMCACHE_SERVERS'] = "localhost"
+
+# Set root for log file
+set :root, Dir.pwd
+set :logger_level, :debug
+
 # Cache settings
 set :cache, (ENV["MEMCACHE_SERVERS"] || Dalli::Client.new)
 set :cache_ttl, 180
