@@ -1,37 +1,5 @@
-require 'rubygems'
-require 'bundler'
-Bundler.require :default, :webapp, (ENV['RACK_ENV'] || "development").to_sym
-
-Dir["./lib/*.rb"].each { |f| require f }
-
-# Uncomment for local testing
-ENV['MEMCACHE_SERVERS'] = "localhost"
-
-# Set root for log file
-set :root, Dir.pwd
-set :logger_level, :debug
-
-# Cache settings
-set :cache, (ENV["MEMCACHE_SERVERS"] || Dalli::Client.new)
-set :cache_ttl, 180
-
-# Haml settings
-set :haml, format: :html5, attr_wrapper: %{"}
-set :title, "Stream status"
-
-# Streams to monitor
-# [id, name, :service]
-
-set :streams, [
-	"http://www.own3d.tv/Echo5ive/live/131174"
-	]
-
-def update_streams
-	settings.streams.map! do |stream|
-		stream_id = "#{stream[:service]}-#{stream[:id]}"
-		Stream.new(stream[:id], stream[:service])
-	end
-end
+require "#{File.dirname(__FILE__)}/setup.rb"
+set :app_file, __FILE__  # Unbreak Bundler.
 
 get "/" do
 	update_streams
