@@ -2,8 +2,6 @@ require 'rubygems'
 require 'bundler'
 Bundler.require :default, (ENV['RACK_ENV'] || "development").to_sym
 
-require 'stream_utils'
-
 class Stream
 
 	attr_reader :name, :viewers, :stream_uri, :json_uri, :cache_id
