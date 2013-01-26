@@ -26,11 +26,12 @@ class Stream
 		@is_live
 	end
 
-	def to_s
+	def inspect
 		{
 			name: @name,
 			viewers: @viewers,
 			stream_uri: @stream_uri,
+			json_uri: @json_uri,
 			cache_id: @cache_id
 		}
 	end
