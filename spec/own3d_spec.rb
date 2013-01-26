@@ -30,7 +30,7 @@ describe Stream::Own3d do
 
 	describe "@cache_id" do
 		it "returns cache id" do
-			own3d_online.cache_id.should eq("c5f8da039f6b5972da912c28b6fa16f5")
+			own3d_online.cache_id.should eq("add1fb85743dc3dca2d0da30c731d253")
 		end
 	end
 

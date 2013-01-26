@@ -51,6 +51,7 @@ describe Stream::Service do
 			result = {
 				:service => :own3d,
 				:stream_id => "131174",
+				:cache_id => "add1fb85743dc3dca2d0da30c731d253",
 				:json_uri => "http://api.own3d.tv/rest/live/status.json?liveid=131174"
 			}
 			Stream::Service.normalize("http://www.own3d.tv/Echo5ive/live/131174").should eq(result)
@@ -62,6 +63,7 @@ describe Stream::Service do
 			result = {
 				:service => :justin,
 				:stream_id => "echo5ive",
+				:cache_id => "d2c1e3c2d8094bd6247cf63117f2c3f8",
 				:json_uri => "http://api.justin.tv/api/stream/list.json?channel=echo5ive"
 			}
 			Stream::Service.normalize("http://www.justin.tv/echo5ive").should eq(result)
@@ -73,6 +75,7 @@ describe Stream::Service do
 			result = {
 				:service => :twitch,
 				:stream_id => "echo5ive",
+				:cache_id => "1f5216b88bcbc28647630500d9946ed2",
 				:json_uri => "http://api.justin.tv/api/stream/list.json?channel=echo5ive"
 			}
 			Stream::Service.normalize("http://www.twitch.tv/echo5ive").should eq(result)
