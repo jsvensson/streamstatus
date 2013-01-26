@@ -23,21 +23,7 @@ set :title, "Stream status"
 # [id, name, :service]
 
 set :streams, [
-		{
-			id: 131174,
-			name: "Echo",
-			service: :own3d
-		},
-		{
-			id: "DanDinh",
-			name: "Dan Dinh",
-			service: :twitch
-		},
-		{
-			id: "P10DotA",
-			name: "P10",
-			service: :twitch
-		}
+	"http://www.own3d.tv/Echo5ive/live/131174"
 	]
 
 def update_streams
