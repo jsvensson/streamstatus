@@ -1,5 +1,20 @@
 class Stream
 
+	module Cache
+
+		def self.get(key, ttl=settings.cache_ttl)
+			if settings.cache.get(key) == nil
+				settings.cache.set(key, "foo")
+			end
+			settings.cache.get(key)
+		end
+
+		def self.name(service, name)
+			Digest::MD5.hexdigest "#{service}-#{name}"
+		end
+
+	end
+
 	module Service
 
 		StreamJsonUri = {
