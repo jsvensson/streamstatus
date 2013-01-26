@@ -16,7 +16,7 @@ class Stream
 			@stream_id = Stream::Service.normalize(stream_uri)[:stream_id]
 			@json_uri = @options[:file]
 		else
-			@json_uri = Stream::Service.normalize(stream_url)
+			@json_uri = Stream::Service.normalize(stream_uri)
 		end
 
 		get_status
