@@ -6,19 +6,20 @@ class Stream
 
 	attr_reader :name, :viewers, :stream_uri, :json_uri, :cache_id
 
-	def initialize(stream_uri, options = {})
+	def initialize(stream_uri, options = {:update => true})
+		data = Stream::Service.normalize(stream_uri)
 		@options    = options
 		@stream_uri = stream_uri
-		@stream_id  = Stream::Service.normalize(stream_uri)[:stream_id]
-		@service    = Stream::Service.normalize(stream_uri)[:service]
-		@cache_id   = Stream::Cache.name(self.class, @stream_id)
+		@stream_id  = data[:stream_id]
+		@service    = data[:service]
+		@cache_id   = data[:cache_id]
 		if @options[:file]
 			@json_uri = @options[:file]
 		else
-			@json_uri = Stream::Service.normalize(stream_uri)[:json_uri]
+			@json_uri = data[:json_uri]
 		end
 
-		get_status
+		update
 	end
 
 	def is_live?
