@@ -29,6 +29,7 @@ class Stream
 					result = {
 						service: service,
 						stream_id: stream_id,
+						cache_id: Digest::MD5.hexdigest("#{service}-#{stream_id}"),
 						json_uri: "#{StreamJsonUri[service]}#{stream_id}"
 					}
 					return result
