@@ -2,5 +2,6 @@
 .bundle/
 .DS_Store
 cache/
+log/
 tmp/
 vendor/
