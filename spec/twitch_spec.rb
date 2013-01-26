@@ -108,5 +108,25 @@ describe Stream::Twitch do
 		end
 	end
 
+	describe "#inspect" do
+		it "returns a hash" do
+			own3d_online.inspect.should be_a(Hash)
+		end
+		it "returns a string for name" do
+			own3d_online.inspect[:name].should be_a(String)
+		end
+		it "returns a string for stream_uri" do
+			own3d_online.inspect[:stream_uri].should be_a(String)
+		end
+		it "returns a string for json_uri" do
+			own3d_online.inspect[:json_uri].should be_a(String)
+		end
+		it "returns a string for cache_id" do
+			own3d_online.inspect[:cache_id].should be_a(String)
+		end
+		it "returns a fixnum for viewers" do
+			own3d_online.inspect[:viewers].should be_a(Fixnum)
+		end
+	end
 
 end
