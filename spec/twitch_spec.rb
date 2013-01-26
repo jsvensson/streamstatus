@@ -30,7 +30,7 @@ describe Stream::Twitch do
 
 	describe "@cache_id" do
 		it "returns cache id" do
-			twitch_online.cache_id.should eq("2cfde5ec768165e18983ec0cf6d1dd3f")
+			twitch_online.cache_id.should eq("7963899928cf25a77cca7f134307ed6c")
 		end
 	end
 
