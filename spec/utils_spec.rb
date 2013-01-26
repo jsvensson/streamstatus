@@ -79,5 +79,4 @@ describe Stream::Service do
 		end
 	end
 
-
 end
