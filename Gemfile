@@ -5,6 +5,7 @@ gem "httparty"
 group :webapp do
 	gem "dalli", "~> 2.6.0"
 	gem "sinatra"
+	gem "sinatra-logger"
 	gem "thin"
 	gem "haml"
 end
