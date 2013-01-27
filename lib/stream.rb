@@ -6,7 +6,7 @@ class Stream
 
 	attr_reader :name, :viewers, :stream_uri, :json_uri, :cache_id
 
-	def initialize(stream_uri, options = {:update => true})
+	def initialize(stream_uri, options = {:update => true, :file => false})
 		data = Stream::Service.normalize(stream_uri)
 		@options    = options
 		@stream_uri = stream_uri
@@ -36,9 +36,7 @@ class Stream
 		}
 	end
 
-	private
-
-	def get_status
+	def update
 		if @options[:file]
 			f = File.read(@json_uri)
 			response = MultiJson.load(f)
@@ -48,6 +46,8 @@ class Stream
 
 		@response = build(response)
 	end
+
+	private
 
 	def build(data)
 		raise NotImplementedError
