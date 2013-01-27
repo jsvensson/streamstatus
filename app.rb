@@ -1,13 +1,8 @@
 require "#{File.dirname(__FILE__)}/setup.rb"
 set :app_file, __FILE__  # Unbreak Bundler.
 
-get "/" do
-	update_streams
-
-	@title = settings.title
-	@streams = settings.streams
-
-	haml :index
+get '/' do
+	Stream::Cacher.new(settings.cache).set("color", "yellow")
 end
 
 get '/stream/:service/:stream_id' do
