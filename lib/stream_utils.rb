@@ -2,8 +2,8 @@ class Stream
 
 	module Cache
 
-		def self.name(service, name)
-			Digest::MD5.hexdigest "#{service}-#{name}"
+		def self.name(*args)
+			Digest::MD5.hexdigest args.join('-')
 		end
 
 	end
