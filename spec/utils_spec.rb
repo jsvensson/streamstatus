@@ -3,9 +3,23 @@ require 'stream_utils'
 
 describe Stream::Cache do
 
-	it "should return MD5 checksum" do
-		Stream::Cache.name("foo", "bar").should eq("e5f9ec048d1dbe19c70f720e002f9cb1")
-	end
+  context "with one argument" do
+  	it "should return MD5 checksum" do
+      Stream::Cache.name("foo").should eq("acbd18db4cc2f85cedef654fccc4a4d8")
+  	end
+  end
+
+  context "with two arguments" do
+    it "should return MD5 checksum" do
+      Stream::Cache.name("foo", "bar").should eq("e5f9ec048d1dbe19c70f720e002f9cb1")
+    end
+  end
+
+  context "with three arguments" do
+    it "should return MD5 checksum" do
+      Stream::Cache.name("foo", "bar", "baz").should eq("4c43793687f9a7170a9149ad391cbf70")
+    end
+  end
 
 end
 
