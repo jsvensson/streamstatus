@@ -1,1 +1,1 @@
-web: bundle exec rerun 'ruby app.rb -p $PORT'
+web: bundle exec rerun --clear --pattern "**/*.{rb,haml}" -- ruby app.rb -p $PORT
