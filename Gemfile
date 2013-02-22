@@ -1,9 +1,10 @@
 source 'https://rubygems.org'
 
 gem "httparty"
+gem 'resque', "~> 1.22.0"
+gem "dalli", "~> 2.6.0"
 
 group :webapp do
-	gem "dalli", "~> 2.6.0"
 	gem "sinatra"
 	gem "sinatra-logger"
 	gem "thin"
