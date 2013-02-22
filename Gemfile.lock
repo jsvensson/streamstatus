@@ -33,6 +33,8 @@ GEM
       rack
     rake (10.0.3)
     rb-fsevent (0.9.3)
+    rerun (0.8.0)
+      listen
     rspec (2.12.0)
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)
@@ -67,6 +69,7 @@ DEPENDENCIES
   httparty
   rake
   rb-fsevent (~> 0.9.1)
+  rerun
   rspec (~> 2.12.0)
   sinatra
   sinatra-logger

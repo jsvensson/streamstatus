@@ -11,6 +11,7 @@ group :webapp do
 end
 
 group :development do
+  gem 'rerun'
 	gem "growl"
 	gem "guard"
 	gem "guard-rspec"
