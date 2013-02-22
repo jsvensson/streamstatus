@@ -14,7 +14,7 @@ class Stream
 				@viewers    = data['channel_count']
 			else
 				@is_live    = false
-				@name       = nil
+				@name       = "Offline Twitch/Justin stream"
 				@viewers    = 0
 			end
 		end
