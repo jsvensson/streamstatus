@@ -1,6 +1,10 @@
 require "#{File.dirname(__FILE__)}/setup.rb"
 set :app_file, __FILE__  # Unbreak Bundler.
 
+before do
+  logger.level = 0
+end
+
 get '/' do
 	Stream::Cacher.new(settings.cache).set("color", "yellow")
 end
