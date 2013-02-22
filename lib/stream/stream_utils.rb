@@ -12,13 +12,11 @@ class Stream
 
 		StreamJsonUri = {
 			twitch: "http://api.justin.tv/api/stream/list.json?channel=",
-			justin: "http://api.justin.tv/api/stream/list.json?channel=",
-			own3d: "http://api.own3d.tv/rest/live/status.json?liveid="
+			justin: "http://api.justin.tv/api/stream/list.json?channel="
 		}
 
 		def self.normalize(url)
 			patterns = [
-				/http:\/\/www.(own3d).tv\/\w+\/live\/(\d+)/,  # Own3d
 				/http:\/\/www.(justin|twitch).tv\/(\w+)/  # Justin/Twitch
 			]
 
