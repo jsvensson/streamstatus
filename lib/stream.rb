@@ -6,20 +6,26 @@ class Stream
 
   attr_reader :name, :viewers, :stream_uri, :json_uri, :cache_id
 
-  def initialize(stream_uri, options = {:update => true, :file => false})
+  def initialize(stream_uri, opts = {})
+    opts = {
+      file: nil,
+      update: true
+    }.merge(opts)
+
     data = Stream::Service.normalize(stream_uri)
-    @options    = options
+    @options    = opts
     @stream_uri = stream_uri
     @stream_id  = data[:stream_id]
     @service    = data[:service]
     @cache_id   = data[:cache_id]
-    if @options[:file]
-      @json_uri = @options[:file]
+    if opts[:file]
+      @options[:read_from_file] = true
+      @json_uri = opts[:file]
     else
       @json_uri = data[:json_uri]
     end
 
-    update
+    update if opts[:update]
   end
 
   def is_live?
@@ -37,7 +43,7 @@ class Stream
   end
 
   def update
-    if @options[:file]
+    if @options[:read_from_file]
       f = File.read(@json_uri)
       response = MultiJson.load(f)
     else
