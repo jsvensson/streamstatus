@@ -2,24 +2,30 @@ require 'rubygems'
 require 'bundler'
 Bundler.require :default, :webapp, (ENV['RACK_ENV'] || "development").to_sym
 
-# Set root for log file
-set :root, Dir.pwd
-set :logger_level, :debug
+configure do
 
-# Cache settings
-set :cache, (ENV["MEMCACHE_SERVERS"] || Dalli::Client.new)
-set :cache_ttl, 30
+  # Logging?
+  enable :logging
 
-# Haml settings
-set :haml, format: :html5, attr_wrapper: %{"}
-set :title, "Stream status"
+  # Set root for log file
+  set :root, Dir.pwd
+  set :logger_level, :debug
 
-# Streams to monitor by default
-set :streams, [
-		"http://www.own3d.tv/Echo5ive/live/131174"
-	]
-set :streamlist, []
+  # Cache settings
+  set :cache, (ENV["MEMCACHE_SERVERS"] || Dalli::Client.new)
+  set :cache_ttl, 30
 
+  # Haml settings
+  set :haml, format: :html5, attr_wrapper: %{"}
+  set :default_title, "Stream status"
+
+  # Streams to monitor by default
+  set :default_streams, [
+    "http://www.twitch.tv/echo5ive",
+    "http://www.twitch.tv/dandinh",
+    "http://www.twitch.tv/mojang"
+  ]
+end
 
 Dir["./{lib,helpers}/**/*.rb"].each { |f| require f }
 
