@@ -25,23 +25,6 @@ end
 
 describe Stream::Service do
 
-	context "Own3d.tv hash access" do
-		it "returns Own3d.tv stream id" do
-			test = Stream::Service.normalize("http://www.own3d.tv/Echo5ive/live/131174")
-			test[:stream_id].should eq("131174")
-		end
-
-		it "returns Own3d.tv JSON URI" do
-			test = Stream::Service.normalize("http://www.own3d.tv/Echo5ive/live/131174")
-			test[:json_uri].should eq("http://api.own3d.tv/rest/live/status.json?liveid=131174")
-		end
-
-		it "returns Own3d.tv service name" do
-			test = Stream::Service.normalize("http://www.own3d.tv/Echo5ive/live/131174")
-			test[:service].should eq(:own3d)
-		end
-	end
-
 	context "Twitch.tv hash access" do
 		it "returns Twitch.tv stream id" do
 			test = Stream::Service.normalize("http://www.twitch.tv/echo5ive")
@@ -56,19 +39,6 @@ describe Stream::Service do
 		it "returns Twitch.tv service name" do
 			test = Stream::Service.normalize("http://www.twitch.tv/echo5ive")
 			test[:service].should eq(:twitch)
-		end
-	end
-
-
-	context "Own3d.tv URI" do
-		it "returns hash with stream information" do
-			result = {
-				:service => :own3d,
-				:stream_id => "131174",
-				:cache_id => "add1fb85743dc3dca2d0da30c731d253",
-				:json_uri => "http://api.own3d.tv/rest/live/status.json?liveid=131174"
-			}
-			Stream::Service.normalize("http://www.own3d.tv/Echo5ive/live/131174").should eq(result)
 		end
 	end
 
