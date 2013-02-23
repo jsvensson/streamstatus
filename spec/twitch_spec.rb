@@ -48,16 +48,16 @@ describe Stream::Twitch do
 		end
 	end
 
-	describe '#name' do
+	describe '#title' do
 		context "stream is online" do
-			it 'shows stream name' do
-				twitch_online.name.should eq("Dan Dinh")
+			it 'shows stream title' do
+				twitch_online.title.should eq("Dan Dinh")
 			end
 		end
 
 		context "stream is offline" do
 			it "returns offline message" do
-				twitch_offline.name.should eq("Offline Twitch/Justin stream")
+				twitch_offline.title.should eq("Offline Twitch/Justin stream")
 			end
 		end
 	end
@@ -112,6 +112,9 @@ describe Stream::Twitch do
 		it "returns a hash" do
 			twitch_online.inspect.should be_a(Hash)
 		end
+    it "returns a string for username" do
+      twitch_online.inspect[:username].should be_a(String)
+    end
 		it "returns a string for title" do
 			twitch_online.inspect[:title].should be_a(String)
 		end
