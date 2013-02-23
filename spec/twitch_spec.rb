@@ -48,7 +48,7 @@ describe Stream::Twitch do
 		end
 	end
 
-	describe '#title' do
+	describe '@title' do
 		context "stream is online" do
 			it 'shows stream title' do
 				twitch_online.title.should eq("Dan Dinh")
@@ -62,7 +62,7 @@ describe Stream::Twitch do
 		end
 	end
 
-	describe '#viewers' do
+	describe '@viewers' do
 		context 'stream is offline' do
 			it 'shows 0 viewers' do
 				twitch_offline.viewers.should eq(0)
