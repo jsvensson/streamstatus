@@ -112,8 +112,8 @@ describe Stream::Twitch do
 		it "returns a hash" do
 			twitch_online.inspect.should be_a(Hash)
 		end
-		it "returns a string for name" do
-			twitch_online.inspect[:name].should be_a(String)
+		it "returns a string for title" do
+			twitch_online.inspect[:title].should be_a(String)
 		end
 		it "returns a string for stream_uri" do
 			twitch_online.inspect[:stream_uri].should be_a(String)

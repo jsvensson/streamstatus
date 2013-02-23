@@ -10,12 +10,12 @@ class Stream
 			@json_uri   = "http://api.justin.tv/api/stream/list.json?channel=#{@stream_id}"
 			if data
 				@is_live    = true
-				@name       = data['title']
 				@viewers    = data['channel_count']
+        @title    = data['title']
 			else
 				@is_live    = false
-				@name       = "Offline Twitch/Justin stream"
 				@viewers    = 0
+        @title   = "Offline Twitch/Justin stream"
 			end
 		end
 
