@@ -1,10 +1,20 @@
 !!!
 %html
-	%head
-		%title= @title
-	%body
-		%h1= @title
+  %head
+    %title Stream Status
+  %body
+    %h1 Stream Status
 
-		%ul
-			- @streams.each do |s|
-				%li== <a href="#{s.uri}">#{s.name}</a>, #{s.is_live?}, #{s.viewers} viewers
+    %table
+      %tr
+        %th Name
+        %th Status
+        %th Viewers
+        %th Title
+      - @streams.each do |stream|
+        %tr
+          %td
+            %a{href: stream.stream_uri} #{stream.username}
+          %td= stream.is_live? ? "Online" : "Offline"
+          %td= stream.viewers
+          %td= stream.title

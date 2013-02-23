@@ -6,7 +6,10 @@ before do
 end
 
 get '/' do
-	Stream::Cacher.new(settings.cache).set("color", "yellow")
+  @streams = []
+  settings.default_streams.each { |str| @streams << update_stream(str) }
+
+  haml :index
 end
 
 get '/stream/:service/:stream_id' do
