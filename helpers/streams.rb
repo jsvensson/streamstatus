@@ -1,7 +1,6 @@
 helpers do
 
-  def update_stream(stream_uri)
-
+  def update_stream(stream_uri, cache)
     str = Stream::Twitch.new(stream_uri, {update: false})
 
     if object = cache.get(str.cache_id)
