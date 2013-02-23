@@ -32,5 +32,5 @@ configure do
   ]
 end
 
-Dir["#{File.dirname(__FILE__)}/{lib,helpers}/**/*.rb"].each { |f| require f }
+Dir["{lib,helpers}/**/*.rb"].each { |f| require_relative f }
 
