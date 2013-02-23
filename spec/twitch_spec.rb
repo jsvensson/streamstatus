@@ -62,6 +62,20 @@ describe Stream::Twitch do
 		end
 	end
 
+  describe '@username' do
+    context 'stream is online' do
+      it 'shows channel username' do
+        twitch_online.username.should eq('dandinh')
+      end
+    end
+
+    context 'stream is offline' do
+      it 'shows nil for channel username' do
+        twitch_offline.username.should eq(nil)
+      end
+    end
+  end
+
 	describe '@viewers' do
 		context 'stream is offline' do
 			it 'shows 0 viewers' do
