@@ -4,6 +4,9 @@ Bundler.require :default, :webapp, (ENV['RACK_ENV'] || "development").to_sym
 
 configure do
 
+  # Heroku seems to not pass an actual $PORT, set it in app
+  set :port, ENV['PORT'] || 5000
+
   # Logging?
   enable :logging
 
