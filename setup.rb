@@ -13,7 +13,7 @@ configure do
 
   # Cache settings
   set :cache, (ENV["MEMCACHE_SERVERS"] || Dalli::Client.new)
-  set :cache_ttl, 30
+  set :cache_ttl, 180
 
   # Haml settings
   set :haml, format: :html5, attr_wrapper: %{"}
@@ -23,7 +23,9 @@ configure do
   set :default_streams, [
     "http://www.twitch.tv/echo5ive",
     "http://www.twitch.tv/dandinh",
-    "http://www.twitch.tv/mojang"
+    "http://www.twitch.tv/mojang",
+    "http://www.twitch.tv/vman7",
+    "http://www.twitch.tv/wingsofdeath"
   ]
 end
 
