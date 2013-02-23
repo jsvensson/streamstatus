@@ -11,7 +11,7 @@ class Stream
 			if data
         @is_live  = true
         @title    = data['title']
-        @username = data['name']
+        @username = @stream_id.downcase
         @viewers  = data['channel_count']
 			else
         @is_live = false
