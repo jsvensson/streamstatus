@@ -70,8 +70,8 @@ describe Stream::Twitch do
     end
 
     context 'stream is offline' do
-      it 'shows nil for channel username' do
-        twitch_offline.username.should eq(nil)
+      it 'shows channel username' do
+        twitch_offline.username.should eq('dandinh')
       end
     end
   end

@@ -8,10 +8,10 @@ class Stream
 			# Twitch puts the stream data in an array, move it up
 			data = data[0]
 			@json_uri = "http://api.justin.tv/api/stream/list.json?channel=#{@stream_id}"
+      @username = @stream_id.downcase
 			if data
         @is_live  = true
         @title    = data['title']
-        @username = @stream_id.downcase
         @viewers  = data['channel_count']
 			else
         @is_live = false
