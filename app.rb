@@ -5,6 +5,7 @@ get '/' do
   @cache = ObjectCache.new(settings.cache)
   @streams = []
   settings.default_streams.each { |str| @streams << update_stream(str, @cache) }
+  @streams.sort! { |a, b| b.viewers <=> a.viewers }
 
   haml :index
 end
