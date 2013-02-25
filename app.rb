@@ -1,4 +1,4 @@
-require_relative "setup.rb"
+require "#{File.dirname(__FILE__)}/setup.rb"
 set :app_file, __FILE__  # Unbreak Bundler.
 
 get '/' do
