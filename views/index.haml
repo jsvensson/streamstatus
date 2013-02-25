@@ -7,9 +7,10 @@
 
     %table
       %tr
-        %th Name
+        %th Stream
         %th Status
         %th Viewers
+        %th Game
         %th Title
       - @streams.each do |stream|
         %tr
@@ -17,4 +18,5 @@
             %a{href: stream.stream_uri} #{stream.username}
           %td= stream.is_live? ? "Online" : "Offline"
           %td= stream.viewers
+          %td= stream.game
           %td= stream.title

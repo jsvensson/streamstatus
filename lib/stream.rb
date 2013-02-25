@@ -4,7 +4,7 @@ Bundler.require :default, (ENV['RACK_ENV'] || "development").to_sym
 
 class Stream
 
-  attr_reader :title, :username, :viewers, :stream_uri, :json_uri, :cache_id
+  attr_reader :title, :username, :game, :viewers, :stream_uri, :json_uri, :cache_id
 
   def initialize(stream_uri, opts = {})
     opts = {
@@ -37,6 +37,7 @@ class Stream
       title: @title,
       username: @username,
       viewers: @viewers,
+      game: @game,
       stream_uri: @stream_uri,
       json_uri: @json_uri,
       cache_id: @cache_id
