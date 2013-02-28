@@ -29,8 +29,8 @@ configure do
     "http://www.twitch.tv/mojang",
     "http://www.twitch.tv/vman7",
     "http://www.twitch.tv/wingsofdeath",
-    "http://www.twitch.tv/sp4zie"
-
+    "http://www.twitch.tv/sp4zie",
+    "http://www.twitch.tv/riotgames",
   ]
 end
 
