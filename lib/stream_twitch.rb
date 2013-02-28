@@ -16,7 +16,7 @@ class Stream
         @game     = data['meta_game']
       else
         @is_live = false
-        @title   = "Offline Twitch/Justin stream"
+        @title   = 'Offline Twitch stream'
         @viewers = 0
       end
     end
