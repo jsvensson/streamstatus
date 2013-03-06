@@ -31,7 +31,7 @@ class Stream
   end
 
   def is_live?
-    @is_live
+    !!@is_live
   end
 
   def inspect
