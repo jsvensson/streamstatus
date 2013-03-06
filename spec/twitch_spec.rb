@@ -146,4 +146,19 @@ describe Stream::Twitch do
     end
   end
 
+  describe '#<=>' do
+    it 'shows online > offline' do
+      twitch_online.should be > twitch_offline
+    end
+    it 'shows offline < online' do
+      twitch_offline.should be < twitch_online
+    end
+    it 'shows online == online' do
+      twitch_online.should be == twitch_online
+    end
+    it 'shows offline == offline' do
+      twitch_offline.should be == twitch_offline
+    end
+  end
+
 end
