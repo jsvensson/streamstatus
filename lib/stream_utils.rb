@@ -36,7 +36,7 @@ class Stream
 					break
 				end
 			end
-			raise RegexpError, "Couldn't match URL to any pattern"
+			raise RegexpError, "Couldn't match URL to any pattern: #{url}"
 		end
 
 		def self.get_uri
