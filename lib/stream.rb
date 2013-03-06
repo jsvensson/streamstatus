@@ -6,6 +6,8 @@ class Stream
 
   attr_reader :title, :username, :game, :viewers, :stream_uri, :json_uri, :cache_id
 
+  include Comparable
+
   def initialize(stream_uri, opts = {})
     opts = {
       file: nil,
@@ -53,6 +55,19 @@ class Stream
     end
 
     @response = build(response)
+  end
+
+  def <=>(other)
+    # Check view count
+    return 1 if self.viewers > other.viewers
+    return -1 if self.viewers < other.viewers
+
+    # Compare live status
+    return 1 if self.is_live? && !other.is_live?
+    return -1 if !self.is_live? && other.is_live?
+
+    # You know what? If we get this far, let's call them equal.
+    return 0
   end
 
   private
