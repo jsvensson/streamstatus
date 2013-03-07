@@ -39,9 +39,6 @@ class Stream
       raise RegexpError, "Couldn't match URL to any pattern: #{url}"
     end
 
-    def self.get_uri
-    end
-
   end
 
 end
