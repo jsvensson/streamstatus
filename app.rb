@@ -5,7 +5,7 @@ get '/' do
   @cache = ObjectCache.new(settings.cache)
   @streams = []
   settings.default_streams.each { |url| @streams << update_stream(url, @cache) }
-  @streams.sort.reverse!
+  @streams.sort!.reverse!
 
   haml :index
 end
