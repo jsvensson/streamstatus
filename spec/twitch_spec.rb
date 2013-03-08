@@ -56,8 +56,8 @@ describe Stream::Twitch do
     end
 
     context "stream is offline" do
-      it "returns offline message" do
-        twitch_offline.title.should eq("Offline Twitch stream")
+      it "returns nil" do
+        twitch_offline.title.should be(nil)
       end
     end
   end

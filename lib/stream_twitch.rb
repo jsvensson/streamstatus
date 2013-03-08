@@ -15,8 +15,9 @@ class Stream
         @viewers  = data['channel_count']
         @game     = data['meta_game']
       else
+        # No data for offline streams because Twitch sucks
         @is_live = false
-        @title   = 'Offline Twitch stream'
+        @title   = nil
         @viewers = 0
       end
     end
