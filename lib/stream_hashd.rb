@@ -10,7 +10,15 @@ class Stream
       @is_live  = data['live']
       @title    = data['title']
       @viewers  = data['current_viewers']
-      @game     = nil  # Not in their API
+      @game     = id_to_game(data['game_id'])
+    end
+
+    def id_to_game(game_id)
+      games = {
+        '510ad4a7fb153d18e20000d1' => 'League of Legends',
+      }
+
+      games[game_id]
     end
 
   end
