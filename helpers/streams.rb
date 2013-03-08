@@ -18,15 +18,4 @@ helpers do
     end
   end
 
-  def build_stream_url(service, stream_id)
-    case service
-    when :twitch
-      "http://www.twitch.tv/#{stream_id}"
-    when :justin
-      "http://www.justin.tv/#{stream_id}"
-    when :hashd
-      "http://hashd.tv/#{stream_id}"
-    end
-  end
-
 end
