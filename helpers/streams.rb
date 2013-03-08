@@ -9,12 +9,12 @@ helpers do
       str = Stream::Hashd.new(stream_uri, {update: false})
     end
 
-    if object = cache.get(str.cache_id)
+    if object = cache.fetch(str.cache_id)
       return object
     else
       str.update
       cache.set(str.cache_id, str)
-      cache.get(str.cache_id)
+      cache.fetch(str.cache_id)
     end
   end
 

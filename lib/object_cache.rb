@@ -6,7 +6,7 @@ class ObjectCache
     @cache = cache
   end
 
-  def get(object, ttl = settings.cache_ttl)
+  def fetch(object, ttl = settings.cache_ttl)
     if @cache.fetch(key(object)) == nil
       return nil
     end
