@@ -66,6 +66,10 @@ class Stream
     return 1 if self.is_live? && !other.is_live?
     return -1 if !self.is_live? && other.is_live?
 
+    # By now both streams are offline, sort by name
+    return 1 if self.username < other.username
+    return -1 if self.username > other.username
+
     # You know what? If we get this far, let's call them equal.
     return 0
   end
