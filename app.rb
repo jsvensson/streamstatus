@@ -4,7 +4,7 @@ set :app_file, __FILE__  # Unbreak Bundler.
 get '/' do
   @cache = ObjectCache.new(settings.cache)
   @streams = []
-  settings.default_streams.each { |str| @streams << update_stream(str, @cache) }
+  settings.default_streams.each { |url| @streams << update_stream(url, @cache) }
   @streams.sort.reverse!
 
   haml :index
