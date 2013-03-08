@@ -7,10 +7,10 @@ class ObjectCache
   end
 
   def get(object, ttl = settings.cache_ttl)
-    if @cache.get(key(object)) == nil
+    if @cache.fetch(key(object)) == nil
       return nil
     end
-    @cache.get(key(object))
+    @cache.fetch(key(object))
   end
 
   def set(object, value, ttl = settings.cache_ttl)
