@@ -20,7 +20,7 @@ class Stream
         '512ba13fe694aa2da60007ee' => 'Tomb Raider',
       }
 
-      games[game_id]
+      games[game_id] || game_id
     end
 
   end
