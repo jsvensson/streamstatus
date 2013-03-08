@@ -24,13 +24,14 @@ configure do
 
   # Streams to monitor by default
   set :default_streams, [
-    "http://www.twitch.tv/EchoPA",
     "http://www.twitch.tv/dandinh",
     "http://www.twitch.tv/mojang",
     "http://www.twitch.tv/vman7",
     "http://www.twitch.tv/wingsofdeath",
     "http://www.twitch.tv/sp4zie",
     "http://www.twitch.tv/riotgames",
+    "http://www.twitch.tv/voyboy",
+    "http://hashd.tv/echo",
   ]
 end
 
