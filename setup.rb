@@ -15,7 +15,7 @@ configure do
   set :logger_level, :debug
 
   # Cache settings
-  set :cache, (ENV["MEMCACHE_SERVERS"] || Dalli::Client.new)
+  set :cache, Dalli::Client.new
   set :cache_ttl, 180
 
   # Haml settings
