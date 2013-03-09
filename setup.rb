@@ -32,6 +32,7 @@ configure do
     "http://www.twitch.tv/riotgames",
     "http://www.twitch.tv/voyboy",
     "http://hashd.tv/echo",
+    "http://twitch.tv/smitegame",
   ]
 end
 
