@@ -15,5 +15,5 @@ get '/stream/:service/:stream_id' do
   url = build_url(params[:service].to_sym, params[:stream_id])
   @stream = update_stream(url, @cache)
 
-	haml :stream
+  haml :stream
 end
