@@ -11,8 +11,9 @@ get '/' do
 end
 
 get '/stream/:service/:stream_id' do
-	service = params[:service].to_sym
-	stream_id = params[:stream_id]
+  @cache = ObjectCache.new(settings.cache)
+  url = build_url(params[:service].to_sym, params[:stream_id])
+  @stream = update_stream(url, @cache)
 
 	haml :stream
 end
