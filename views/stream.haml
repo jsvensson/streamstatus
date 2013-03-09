@@ -5,3 +5,4 @@
   %body
     %h1= "#{@stream.username} on #{@stream.service}"
     %p= "<code>#{@stream.inspect}</code>"
+    %div= partial "embed/#{@stream.service}"
