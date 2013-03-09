@@ -4,7 +4,7 @@ Bundler.require :default, (ENV['RACK_ENV'] || "development").to_sym
 
 class Stream
 
-  attr_reader :title, :username, :game, :viewers, :stream_uri, :json_uri, :cache_id
+  attr_reader :title, :username, :game, :viewers, :stream_uri, :json_uri, :cache_id, :service
 
   include Comparable
 
