@@ -42,7 +42,8 @@ class Stream
       game: @game,
       stream_uri: @stream_uri,
       json_uri: @json_uri,
-      cache_id: @cache_id
+      cache_id: @cache_id,
+      service: @service
     }
   end
 
