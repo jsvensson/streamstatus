@@ -15,7 +15,7 @@ configure do
   set :logger_level, :debug
 
   # Cache settings
-  set :cache, Dalli::Client.new
+  set :cache, IronCache::Client.new
   set :cache_ttl, 180
 
   # Haml settings
