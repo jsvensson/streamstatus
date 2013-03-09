@@ -34,6 +34,15 @@ configure do
     "http://hashd.tv/echo",
     "http://twitch.tv/smitegame",
   ]
+
+  # Whitelisted sites
+  set :domain_whitelist, [
+    'http://forums.penny-arcade.com/',
+  ]
+
+  # Blacklisted sites
+  set :domain_blacklist, []
+
 end
 
 Dir["./{lib,helpers}/**/*.rb"].each { |f| require f }
