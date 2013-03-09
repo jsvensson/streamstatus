@@ -3,15 +3,14 @@ source 'https://rubygems.org'
 ruby '1.9.3'
 
 gem 'httparty'
-gem 'resque', '~> 1.22.0'
-gem 'dalli', '~> 2.6.0'
-gem 'iron_worker_ng'
 
 group :webapp do
 	gem 'sinatra'
 	gem 'sinatra-logger'
 	gem 'thin'
 	gem 'haml'
+  gem 'iron_worker_ng'
+  gem 'iron_cache'
 end
 
 group :development do
