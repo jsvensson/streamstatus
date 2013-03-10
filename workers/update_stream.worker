@@ -1,0 +1,7 @@
+runtime 'ruby'
+gemfile '../Gemfile', 'default', 'worker'
+
+exec 'update_stream.rb'
+
+file '../iron.json'
+dir '../lib', 'lib'
