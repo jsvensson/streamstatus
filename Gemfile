@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
 
 ruby '1.9.3'
-
-gem 'httparty', :group => :worker
+group :default do
+  gem 'httparty', :group => :worker
+end
 
 group :webapp do
 	gem 'sinatra'
