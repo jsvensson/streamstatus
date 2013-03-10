@@ -12,25 +12,25 @@ end
 
 describe Stream::Twitch do
 
-  it "should be a Stream" do
+  it 'should be a Stream' do
     twitch_online.should be_a(Stream)
   end
 
-  context "stream is online" do
-    it "should initialize" do
+  context 'stream is online' do
+    it 'should initialize' do
       twitch_online.should be_an_instance_of(Stream::Twitch)
     end
   end
 
-  context "stream is offline" do
-    it "should initialize" do
+  context 'stream is offline' do
+    it 'should initialize' do
       twitch_offline.should be_an_instance_of(Stream::Twitch)
     end
   end
 
-  describe "@cache_id" do
-    it "returns cache id" do
-      twitch_online.cache_id.should eq("8b217e650c7ce996a88e40615373c986")
+  describe '@cache_id' do
+    it 'returns cache id' do
+      twitch_online.cache_id.should eq('8b217e650c7ce996a88e40615373c986')
     end
   end
 
@@ -49,14 +49,14 @@ describe Stream::Twitch do
   end
 
   describe '@title' do
-    context "stream is online" do
+    context 'stream is online' do
       it 'shows stream title' do
-        twitch_online.title.should eq("Dan Dinh")
+        twitch_online.title.should eq('Dan Dinh')
       end
     end
 
-    context "stream is offline" do
-      it "returns nil" do
+    context 'stream is offline' do
+      it 'returns nil' do
         twitch_offline.title.should be(nil)
       end
     end
@@ -94,54 +94,54 @@ describe Stream::Twitch do
 
   end
 
-  describe "@stream_uri" do
-    context "stream is online" do
-      it "returns stream URI" do
-        twitch_online.stream_uri.should eq("http://www.twitch.tv/DanDinh")
+  describe '@stream_uri' do
+    context 'stream is online' do
+      it 'returns stream URI' do
+        twitch_online.stream_uri.should eq('http://www.twitch.tv/DanDinh')
       end
     end
 
-    context "stream is offline" do
-      it "returns stream URI" do
-        twitch_offline.stream_uri.should eq("http://www.twitch.tv/DanDinh")
-      end
-    end
-  end
-
-  describe "@json_uri" do
-    context "stream is offline" do
-      it "returns JSON URI" do
-        twitch_online.json_uri.should eq("http://api.justin.tv/api/stream/list.json?channel=DanDinh")
-      end
-    end
-
-    context "stream is online" do
-      it "returns JSON URI" do
-        twitch_online.json_uri.should eq("http://api.justin.tv/api/stream/list.json?channel=DanDinh")
+    context 'stream is offline' do
+      it 'returns stream URI' do
+        twitch_offline.stream_uri.should eq('http://www.twitch.tv/DanDinh')
       end
     end
   end
 
-  describe "#inspect" do
-    it "returns a hash" do
+  describe '@json_uri' do
+    context 'stream is offline' do
+      it 'returns JSON URI' do
+        twitch_online.json_uri.should eq('http://api.justin.tv/api/stream/list.json?channel=DanDinh')
+      end
+    end
+
+    context 'stream is online' do
+      it 'returns JSON URI' do
+        twitch_online.json_uri.should eq('http://api.justin.tv/api/stream/list.json?channel=DanDinh')
+      end
+    end
+  end
+
+  describe '#inspect' do
+    it 'returns a hash' do
       twitch_online.inspect.should be_a(Hash)
     end
-    it "returns a string for username" do
+    it 'returns a string for username' do
       twitch_online.inspect[:username].should be_a(String)
     end
-    it "returns a string for title" do
+    it 'returns a string for title' do
       twitch_online.inspect[:title].should be_a(String)
     end
-    it "returns a string for stream_uri" do
+    it 'returns a string for stream_uri' do
       twitch_online.inspect[:stream_uri].should be_a(String)
     end
-    it "returns a string for json_uri" do
+    it 'returns a string for json_uri' do
       twitch_online.inspect[:json_uri].should be_a(String)
     end
-    it "returns a string for cache_id" do
+    it 'returns a string for cache_id' do
       twitch_online.inspect[:cache_id].should be_a(String)
     end
-    it "returns a fixnum for viewers" do
+    it 'returns a fixnum for viewers' do
       twitch_online.inspect[:viewers].should be_a(Fixnum)
     end
   end

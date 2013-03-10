@@ -12,25 +12,25 @@ end
 
 describe Stream::Hashd do
 
-  it "should be a Stream" do
+  it 'should be a Stream' do
     hashd_online.should be_a(Stream)
   end
 
-  context "stream is online" do
-    it "should initialize" do
+  context 'stream is online' do
+    it 'should initialize' do
       hashd_online.should be_an_instance_of(Stream::Hashd)
     end
   end
 
-  context "stream is offline" do
-    it "should initialize" do
+  context 'stream is offline' do
+    it 'should initialize' do
       hashd_offline.should be_an_instance_of(Stream::Hashd)
     end
   end
 
-  describe "@cache_id" do
-    it "returns cache id" do
-      hashd_online.cache_id.should eq("888e0717910cef6f29564155f354fb06")
+  describe '@cache_id' do
+    it 'returns cache id' do
+      hashd_online.cache_id.should eq('888e0717910cef6f29564155f354fb06')
     end
   end
 
@@ -49,15 +49,15 @@ describe Stream::Hashd do
   end
 
   describe '@title' do
-    context "stream is online" do
+    context 'stream is online' do
       it 'shows stream title' do
-        hashd_online.title.should eq("Echo plays stuff")
+        hashd_online.title.should eq('Echo plays stuff')
       end
     end
 
-    context "stream is offline" do
-      it "returns offline message" do
-        hashd_offline.title.should eq("Echo plays stuff")
+    context 'stream is offline' do
+      it 'returns offline message' do
+        hashd_offline.title.should eq('Echo plays stuff')
       end
     end
   end
@@ -94,54 +94,54 @@ describe Stream::Hashd do
 
   end
 
-  describe "@stream_uri" do
-    context "stream is online" do
-      it "returns stream URI" do
+  describe '@stream_uri' do
+    context 'stream is online' do
+      it 'returns stream URI' do
         hashd_online.stream_uri.should eq('http://hashd.tv/echo')
       end
     end
 
-    context "stream is offline" do
-      it "returns stream URI" do
+    context 'stream is offline' do
+      it 'returns stream URI' do
         hashd_offline.stream_uri.should eq('http://hashd.tv/echo')
       end
     end
   end
 
-  describe "@json_uri" do
-    context "stream is offline" do
-      it "returns JSON URI" do
+  describe '@json_uri' do
+    context 'stream is offline' do
+      it 'returns JSON URI' do
         hashd_online.json_uri.should eq('http://api.hashd.tv/v1/stream/echo')
       end
     end
 
-    context "stream is online" do
-      it "returns JSON URI" do
+    context 'stream is online' do
+      it 'returns JSON URI' do
         hashd_online.json_uri.should eq('http://api.hashd.tv/v1/stream/echo')
       end
     end
   end
 
-  describe "#inspect" do
-    it "returns a hash" do
+  describe '#inspect' do
+    it 'returns a hash' do
       hashd_online.inspect.should be_a(Hash)
     end
-    it "returns a string for username" do
+    it 'returns a string for username' do
       hashd_online.inspect[:username].should be_a(String)
     end
-    it "returns a string for title" do
+    it 'returns a string for title' do
       hashd_online.inspect[:title].should be_a(String)
     end
-    it "returns a string for stream_uri" do
+    it 'returns a string for stream_uri' do
       hashd_online.inspect[:stream_uri].should be_a(String)
     end
-    it "returns a string for json_uri" do
+    it 'returns a string for json_uri' do
       hashd_online.inspect[:json_uri].should be_a(String)
     end
-    it "returns a string for cache_id" do
+    it 'returns a string for cache_id' do
       hashd_online.inspect[:cache_id].should be_a(String)
     end
-    it "returns a fixnum for viewers" do
+    it 'returns a fixnum for viewers' do
       hashd_online.inspect[:viewers].should be_a(Fixnum)
     end
   end
@@ -158,6 +158,12 @@ describe Stream::Hashd do
     end
     it 'shows offline == offline' do
       hashd_offline.should be == hashd_offline
+    end
+  end
+
+  describe '#to_json' do
+    it 'returns json' do
+      hashd_online.to_json.should eq('foo')
     end
   end
 
