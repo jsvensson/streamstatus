@@ -6,7 +6,8 @@ require 'yaml'
 
 class Stream
 
-  attr_reader :title, :username, :game, :viewers, :stream_uri, :json_uri, :cache_id, :service
+  attr_reader :title, :username, :game, :viewers, :service
+  attr_reader :stream_uri, :json_uri, :cache_id, :updated_at
 
   include Comparable
 
@@ -66,6 +67,7 @@ class Stream
     end
 
     @response = build(response)
+    @updated_at = DateTime.now
   end
 
   def <=>(other)
