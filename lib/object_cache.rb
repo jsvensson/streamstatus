@@ -1,5 +1,3 @@
-require 'digest/md5'
-
 class ObjectCache
 
   def initialize(client, cache)
@@ -7,20 +5,14 @@ class ObjectCache
   end
 
   def get(object)
-    if @cache.get(key(object)) == nil
+    if @cache.get(object) == nil
       return nil
     end
-    @cache.get(key(object))
+    @cache.get(object)
   end
 
   def put(object, value, ttl = settings.cache_ttl)
-    @cache.put(key(object), value, {expires_in: ttl})
-  end
-
-  private
-
-  def key(object)
-    Digest::MD5.hexdigest(object)
+    @cache.put(object, value, {expires_in: ttl})
   end
 
 end
