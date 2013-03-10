@@ -1,2 +1,1 @@
 web: bundle exec rerun --pattern "**/*.{rb,haml}" -- ruby app.rb -p $PORT
-cache: memcached -v
