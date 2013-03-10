@@ -194,5 +194,10 @@ describe Stream::Twitch do
     end
   end
 
+  describe '#age' do
+    it 'should return a Time' do
+      hashd_online.age.should be_a(Fixnum)
+    end
+  end
 
 end
