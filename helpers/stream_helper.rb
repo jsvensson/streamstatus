@@ -10,11 +10,11 @@ helpers do
     end
 
     if object = cache.get(str.cache_id)
-      return object
+      return Stream.from_yaml(object.value)
     else
       str.update
-      cache.set(str.cache_id, str)
-      cache.get(str.cache_id)
+      cache.put(str.cache_id, str.to_yaml)
+      Stream.from_yaml(cache.get(str.cache_id).value)
     end
   end
 
