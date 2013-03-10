@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '1.9.3'
 
-gem 'httparty'
+gem 'httparty', :group => :worker
 
 group :webapp do
 	gem 'sinatra'
@@ -10,7 +10,7 @@ group :webapp do
 	gem 'thin'
 	gem 'haml'
   gem 'iron_worker_ng'
-  gem 'iron_cache'
+  gem 'iron_cache', :group => :worker
 end
 
 group :development do
