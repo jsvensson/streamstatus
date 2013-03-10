@@ -12,6 +12,7 @@
         %th Viewers
         %th Game
         %th Title
+        %th Age
       - @streams.each do |stream|
         %tr
           %td
@@ -20,6 +21,8 @@
           %td= stream.viewers
           %td= stream.game
           %td= stream.title
+          %td= "#{stream.age} seconds"
+
     %p Note 1: Hashd.tv does not list the name of games in their API. If you see a hex string instead of a game name, please tell me the string and the game being played so I can add it to the filters.
     %p Note 2: Twitch.tv does not say which game was last being played if the stream is currently offline.
 

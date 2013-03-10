@@ -67,7 +67,11 @@ class Stream
     end
 
     @response = build(response)
-    @updated_at = DateTime.now
+    @updated_at = Time.now
+  end
+
+  def age
+    (Time.now - @updated_at).to_i
   end
 
   def <=>(other)

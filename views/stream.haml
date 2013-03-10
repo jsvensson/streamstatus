@@ -5,5 +5,5 @@
   %body
     %h1= "#{@stream.username} on #{@stream.service}"
     %p= "<code>#{@stream.inspect}</code>"
-    %p= "Object age: #{@stream.updated_at}"
+    %p= "Object age: #{@stream.age} seconds"
     %div= partial "embed/#{@stream.service}"
