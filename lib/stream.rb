@@ -2,6 +2,8 @@ require 'rubygems'
 require 'bundler'
 Bundler.require :default, (ENV['RACK_ENV'] || "development").to_sym
 
+require 'yaml'
+
 class Stream
 
   attr_reader :title, :username, :game, :viewers, :stream_uri, :json_uri, :cache_id, :service
@@ -28,6 +30,14 @@ class Stream
     end
 
     update if opts[:update]
+  end
+
+  def self.from_yaml(yaml)
+    YAML::load(yaml)
+  end
+
+  def to_yaml
+    YAML.dump(self)
   end
 
   def is_live?

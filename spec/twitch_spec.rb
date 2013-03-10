@@ -161,4 +161,38 @@ describe Stream::Twitch do
     end
   end
 
+  describe '#to_yaml' do
+    it 'spews YAML' do
+      twitch_online.to_yaml.should be_a(String)
+    end
+  end
+
+  describe '::from_yaml' do
+    before do
+      @yaml = twitch_online.to_yaml
+      @yaml_object = Stream::Hashd.from_yaml(@yaml)
+    end
+
+    it 'should be a stream' do
+      @yaml_object.should be_a(Stream)
+    end
+
+    it 'should initialize' do
+      @yaml_object.should be_an_instance_of(Stream::Twitch)
+    end
+
+    it 'should have a stream URI' do
+      @yaml_object.stream_uri.should eq(twitch_online.stream_uri)
+    end
+
+    it 'should have a username' do
+      @yaml_object.username.should eq('dandinh')
+    end
+
+    it 'should be equal to other object' do
+      @yaml_object.should eq(twitch_online)
+    end
+  end
+
+
 end

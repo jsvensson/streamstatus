@@ -161,9 +161,36 @@ describe Stream::Hashd do
     end
   end
 
-  describe '#to_json' do
-    it 'returns json' do
-      hashd_online.to_json.should eq('foo')
+  describe '#to_yaml' do
+    it 'spews YAML' do
+      hashd_online.to_yaml.should be_a(String)
+    end
+  end
+
+  describe '::from_yaml' do
+    before do
+      @yaml = hashd_online.to_yaml
+      @yaml_object = Stream::Hashd.from_yaml(@yaml)
+    end
+
+    it 'should be a stream' do
+      @yaml_object.should be_a(Stream)
+    end
+
+    it 'should initialize' do
+      @yaml_object.should be_an_instance_of(Stream::Hashd)
+    end
+
+    it 'should have a stream URI' do
+      @yaml_object.stream_uri.should eq(hashd_online.stream_uri)
+    end
+
+    it 'should have a username' do
+      @yaml_object.username.should eq('echo')
+    end
+
+    it 'should be equal to other object' do
+      @yaml_object.should eq(hashd_online)
     end
   end
 
