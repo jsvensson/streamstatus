@@ -33,7 +33,7 @@ class Stream
   end
 
   def self.from_yaml(yaml)
-    YAML::load(yaml)
+    YAML.load(yaml)
   end
 
   def to_yaml

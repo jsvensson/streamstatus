@@ -13,7 +13,7 @@ class ObjectCache
     @cache.get(key(object))
   end
 
-  def set(object, value, ttl = settings.cache_ttl)
+  def put(object, value, ttl = settings.cache_ttl)
     @cache.put(key(object), value, {expires_in: ttl})
   end
 
