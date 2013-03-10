@@ -1,8 +1,11 @@
 require "#{File.dirname(__FILE__)}/setup.rb"
 set :app_file, __FILE__  # Unbreak Bundler.
 
+before do
+  @cache = ObjectCache.new(settings.cache, settings.cache_name)
+end
+
 get '/' do
-  @cache = ObjectCache.new(settings.cache)
   @streams = []
   settings.default_streams.each { |url| @streams << update_stream(url, @cache) }
   @streams.sort!.reverse!
@@ -11,7 +14,6 @@ get '/' do
 end
 
 get '/stream/:service/:stream_id' do
-  @cache = ObjectCache.new(settings.cache)
   url = build_url(params[:service].to_sym, params[:stream_id])
   @stream = update_stream(url, @cache)
 
