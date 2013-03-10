@@ -2,19 +2,19 @@ require 'digest/md5'
 
 class ObjectCache
 
-  def initialize(cache)
-    @cache = cache
+  def initialize(client, cache)
+    @cache = client.cache(cache)
   end
 
-  def fetch(object, ttl = settings.cache_ttl)
-    if @cache.fetch(key(object)) == nil
+  def get(object)
+    if @cache.get(key(object)) == nil
       return nil
     end
-    @cache.fetch(key(object))
+    @cache.get(key(object))
   end
 
   def set(object, value, ttl = settings.cache_ttl)
-    @cache.set(key(object), value, ttl)
+    @cache.put(key(object), value, {expires_in: ttl})
   end
 
   private

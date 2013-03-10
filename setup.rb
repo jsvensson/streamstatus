@@ -16,6 +16,7 @@ configure do
 
   # Cache settings
   set :cache, IronCache::Client.new
+  set :cache_name, 'streamstatus'
   set :cache_ttl, 180
 
   # Haml settings
