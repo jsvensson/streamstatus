@@ -7,7 +7,7 @@ require 'yaml'
 class Stream
 
   attr_reader :title, :username, :game, :viewers, :service
-  attr_reader :stream_uri, :json_uri, :cache_id, :updated_at
+  attr_reader :stream_id, :stream_uri, :json_uri, :cache_id, :updated_at
 
   include Comparable
 
