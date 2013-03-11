@@ -11,7 +11,7 @@ helpers do
   end
 
   def truncate(text, length = 30, trunc_string = '…')
-    if text.length > length
+    if text && text.length > length
       text[0..(length-1)] + trunc_string
     else
       text
