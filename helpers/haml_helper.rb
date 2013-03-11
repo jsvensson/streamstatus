@@ -2,6 +2,12 @@
 
 helpers do
 
+  def status_image(status)
+    src = '/images/'
+    st = status ? 'online.png' : 'offline.png'
+    src += st
+  end
+
   def partial(name)
     parts = name.to_s.split('/')
     parts.last.sub!(/\A/, '_')
