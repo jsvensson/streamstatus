@@ -17,7 +17,7 @@
         %tr
           %td
             %a{href: stream.stream_uri} #{stream.username}
-          %td= "<img src=\"#{status_image(stream.is_live?)}\""
+          %td= "<img src='/stream/#{stream.service}/#{stream.stream_id}.png'"
           %td= stream.viewers
           %td= stream.game
           %td= truncate(stream.title)
