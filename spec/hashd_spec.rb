@@ -194,9 +194,19 @@ describe Stream::Hashd do
     end
   end
 
+  describe '@updated_at' do
+    it 'should be a Time' do
+      hashd_online.updated_at.should be_a(Time)
+    end
+  end
+
   describe '#age' do
     it 'should return a Time' do
       hashd_online.age.should be_a(Fixnum)
+    end
+
+    it 'should be >= 0' do
+      hashd_online.age.should be >= 0
     end
   end
 
