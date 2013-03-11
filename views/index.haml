@@ -20,7 +20,7 @@
           %td= stream.is_live? ? "Online" : "Offline"
           %td= stream.viewers
           %td= stream.game
-          %td= stream.title
+          %td= truncate(stream.title)
           %td= "#{stream.age} seconds"
 
     %p Note 1: Hashd.tv does not list the name of games in their API. If you see a hex string instead of a game name, please tell me the string and the game being played so I can add it to the filters.
