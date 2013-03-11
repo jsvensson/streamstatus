@@ -19,6 +19,9 @@ configure do
   set :cache_name, 'stream_status'
   set :cache_ttl, 180
 
+  # Static file cache
+  set :static_cache_control, [:public, :max_age => 7*86400]
+
   # Haml settings
   set :haml, format: :html5, attr_wrapper: %{"}
   set :default_title, "Stream status"
