@@ -2,7 +2,7 @@ require "#{File.dirname(__FILE__)}/setup.rb"
 set :app_file, __FILE__  # Unbreak Bundler.
 
 before do
-  @cache = ObjectCache.new(settings.cache, settings.cache_name)
+  @cache = ObjectCache.new(settings.cache, settings.cache_name, settings.cache_ttl)
 end
 
 get '/' do
