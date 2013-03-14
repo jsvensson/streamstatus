@@ -36,6 +36,7 @@ configure do
     "http://www.twitch.tv/voyboy",
     "http://hashd.tv/echo",
     "http://twitch.tv/smitegame",
+    'http://twitch.tv/ciderhelm'
   ]
 
   # Whitelisted sites
