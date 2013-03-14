@@ -17,7 +17,7 @@ get '/stream/:service/:stream_id.png' do
   url = build_url(params[:service].to_sym, params[:stream_id])
   @stream = update_stream(url, @cache)
 
-  response['Cache-Control'] = "public, max-age=30, must-revalidate"
+  response['Cache-Control'] = "public, max-age=0, must-revalidate"
   redirect status_image(@stream.is_live?)
 end
 
