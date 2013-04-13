@@ -6,9 +6,6 @@ class ObjectCache
   end
 
   def get(object)
-    if @cache.get(object) == nil
-      return nil
-    end
     @cache.get(object)
   end
 
