@@ -1,6 +1,7 @@
 *.sublime-*
 .bundle/
 .DS_Store
+.idea
 cache/
 log/
 tmp/
