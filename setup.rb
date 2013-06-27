@@ -24,7 +24,7 @@ configure do
 
   # Haml settings
   set :haml, format: :html5, attr_wrapper: %{"}
-  set :default_title, "Stream status"
+  set :default_title, 'Stream status'
 
   # Streams to monitor by default
   set :default_streams, [
@@ -47,4 +47,4 @@ configure do
 
 end
 
-Dir["./{lib,helpers}/**/*.rb"].each { |f| require f }
+Dir['./{lib,helpers}/**/*.rb'].each { |f| require f }
