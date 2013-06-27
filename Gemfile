@@ -24,5 +24,5 @@ end
 
 group :test do
 	gem 'rake'
-	gem 'rspec', '~> 2.12.0'
+	gem 'rspec', '~> 2.13.0'
 end
