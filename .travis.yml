@@ -1,3 +1,11 @@
+---
 language: ruby
 rvm:
- - 1.9.3
+- 1.9.3
+deploy:
+  provider: heroku
+  app: streamsigs
+  api_key:
+    secure: ! 'xSTDjRFI3scrgKAUJWkVPVkptB4LmQLcV1RVpqiwkKeLNWhY9Ot2e/0YZCdd
+      F6x9GpoLDmpeRea6b3a2v5QOlxZToqBiyCXxJoaF9e7nlz0DtSypft6yb9Ol
+      AI4k3NwkFn7LZ+OUlCc8YSaBk5AbqHlH91sppqv53LCTm4Czt1w='
