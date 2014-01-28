@@ -32,7 +32,6 @@ configure do
     'http://www.twitch.tv/wingsofdeath',
     'http://www.twitch.tv/sp4zie',
     'http://www.twitch.tv/riotgames',
-    'http://hashd.tv/echo',
     'http://twitch.tv/smitegame',
     'http://twitch.tv/ciderhelm'
   ]
